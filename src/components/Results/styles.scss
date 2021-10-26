@@ -1,0 +1,20 @@
+.results{
+
+background-color: #fff;
+text-align: center; 
+margin: auto; 
+padding: 2rem; 
+color: #bb5432; 
+
+  &__price{
+    font-weight: 700;
+    margin-bottom: 0.8rem; 
+    font-size: 2rem; 
+  }
+
+  &__country{
+    font-weight: 300;
+    font-size: 1rem; 
+  }
+
+}
