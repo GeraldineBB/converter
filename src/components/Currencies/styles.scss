@@ -1,0 +1,28 @@
+.content {
+
+background-color: #fff;
+color: #bb5432; 
+height: 25rem; 
+overflow-y: scroll; 
+scrollbar-color: rebeccapurple green;
+scrollbar-width: thin;
+  
+&__title{
+  font-weight: 500;
+  margin-bottom: 1.5rem; 
+  margin-top: 0.8rem; 
+  margin-left: 0.8rem; 
+  height: 2.3rem;
+}
+
+&__item{
+  margin-bottom: 1.5rem; 
+  margin-left: 0.8rem; 
+  height: 2.3rem;
+}
+
+&__item:hover{
+  background-color:#f1c5b6; 
+}
+
+}

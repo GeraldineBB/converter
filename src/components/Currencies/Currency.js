@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import './styles.scss';
 
 const Currency = ({ name }) => (
-  <li className="currency__item">{name}</li>
+  <li className="content__item">{name}</li>
 );
 
 Currency.propTypes = {
