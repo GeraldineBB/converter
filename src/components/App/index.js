@@ -1,11 +1,24 @@
+// Import des composants
+import Header from '../Header';
+import Currencies from '../Currencies';
+import Results from '../Results';
+
 // == Import
 import './styles.scss';
 
+// Import des données
+// import currenciesData from '../../data/currencies';
+
 // == Composant
 const App = () => (
+
   <div className="app">
-    <h1>Composant : App</h1>
+    <Header />
+    <Currencies />
+    <Results />
+
   </div>
+
 );
 
 // == Export
