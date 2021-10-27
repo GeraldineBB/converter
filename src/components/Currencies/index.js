@@ -5,7 +5,7 @@ import Currency from './Currency';
 import './styles.scss';
 
 // on récupère la liste des données > tableau d'objet 
-const Currencies = ({currencies}) => (
+const Currencies = ({currencies, changeCurrency}) => (
   <main className="currencies">
     
     <h2 className="currencies__title">Currencies</h2>
@@ -18,7 +18,7 @@ const Currencies = ({currencies}) => (
           // i.e. :
           // - currency.id dans une prop id de Currency
           // - currency.name dans une prop name de Currency
-          (currency) => <Currency key= {currencies.name} {...currency}/>
+          (currency) => <Currency key={currencies.name} {...currency} changeCurrency={changeCurrency} />
         )
 
       }

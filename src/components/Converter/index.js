@@ -39,18 +39,29 @@ class Converter extends React.Component {
     this.setState({ open: !open });
   }
 
-  getConvertedAmount() {
+  changeCurrency = (currencyName) => {
+
+    // eslint-disable-next-line no-console
+    console.log("changeCurrency",currencyName); 
+
+    this.setState({ currency: currencyName });
+
+  }
+
+
+  getConvertedAmount = () => {
     // on réalise la conversion
     // plan d'attaque:
     // - on récupère le state : currency et amount
     const { amount, currency } = this.state;
     //    - on va chercher la currency dans la liste des devises
     const foundCurrency = currenciesList.find(
-      (currencyItem) => currencyItem.name === currency, 
+      (currencyItem) => currencyItem.name === currency,
     );
     // - on multiplie par le rate de la devise trouvée
     return Number((amount * foundCurrency.rate).toFixed(2));
-  }
+
+}
 
   // == Composant
   render() {
@@ -71,7 +82,7 @@ class Converter extends React.Component {
       De plus rendre un booléen dans notre JSX ne 'rend' rien du tout
       */
     }
-        {open && <Currencies currencies={currenciesList} />}
+        {open && <Currencies currencies={currenciesList} changeCurrency={this.changeCurrency} />}
         <ConvertedAmount amount={convertedAmount} currency={currency} />
       </div>
     );
