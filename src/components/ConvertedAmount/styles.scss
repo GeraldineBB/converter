@@ -1,20 +1,17 @@
-.results{
+@use '../../styles/vars';
 
-background-color: #fff;
-text-align: center; 
-margin: auto; 
-padding: 2rem; 
-color: #bb5432; 
+.converted-amount {
+  background-color: vars.$color-light;
+  padding: vars.$gutter * 3 0;
+  text-align: center;
 
-  &__price{
-    font-weight: 700;
-    margin-bottom: 0.8rem; 
-    font-size: 2rem; 
+  &__amount {
+    font-weight: vars.$weight-bold;
+    font-size: 2em;
   }
 
-  &__country{
-    font-weight: 300;
-    font-size: 1rem; 
+  &__currency {
+    font-size: 1.3em;
+    margin-top: vars.$gutter;
   }
-
 }

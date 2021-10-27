@@ -1,13 +1,12 @@
-import PropTypes from 'prop-types'; 
 import './styles.scss'; 
 
-const Results = () => (
+const ConvertedAmount = () => (
 
-  <div className="results">
-    <h1 className="results__price">1.09</h1>
-    <h2 className="results__country">United States Dollar</h2>
-  </div>
+  <footer className="converted-amount">
+    <h2 className="converted-amount__amount">1.09</h2>
+    <p className="converted-amount__currency">United States Dollar</p>
+  </footer>
   
 );
 
-export default Results; 
+export default ConvertedAmount; 
