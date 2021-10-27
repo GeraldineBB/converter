@@ -1,12 +1,18 @@
+import PropTypes from 'prop-types';
 import './styles.scss'; 
 
-const ConvertedAmount = () => (
+const ConvertedAmount = ({amount, currency}) => (
 
   <footer className="converted-amount">
-    <h2 className="converted-amount__amount">1.09</h2>
-    <p className="converted-amount__currency">United States Dollar</p>
+    <h2 className="converted-amount__amount">{amount}</h2>
+    <p className="converted-amount__currency">{currency}</p>
   </footer>
   
 );
+
+ConvertedAmount.propTypes = {
+  amount: PropTypes.number.isRequired,
+  currency: PropTypes.string.isRequired,
+};
 
 export default ConvertedAmount; 

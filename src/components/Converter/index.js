@@ -15,7 +15,7 @@ const Converter = () => (
   <div className="converter">
     <Amount amount={1}/>
     <Currencies/>
-    <ConvertedAmount/>
+    <ConvertedAmount amount={1.08} currency="Blabla"/>
   </div>
 
 
