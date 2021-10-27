@@ -1,4 +1,7 @@
 import PropTypes from 'prop-types'; 
+
+import Currency from './Currency'; 
+
 import './styles.scss';
 
 // on récupère la liste des données > tableau d'objet 
@@ -10,7 +13,12 @@ const Currencies = ({currencies}) => (
 
       {
         currencies.map(
-          (currency) => <li key={currency.name}className="currencies__item"> {currency.name}</li>
+          // ici, on déverse l'ensemble des propriétés de l'objet currency
+          // dans des props du composant Cirrency qui portent le même nom
+          // i.e. :
+          // - currency.id dans une prop id de Currency
+          // - currency.name dans une prop name de Currency
+          (currency) => <Currency key= {currencies.name} {...currency}/>
         )
 
       }
