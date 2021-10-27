@@ -4,6 +4,8 @@
 body {
   // ici on utilise la valeur de la variable font
   font-family: vars.$font;
+  background-color: vars.$color-alt;
+  color: vars.$color-main; 
 }
 
 /* 

@@ -1,0 +1,31 @@
+@use "../../styles/vars";
+
+.currencies {
+  background-color: vars.$color-light;
+  max-height: 250px;
+  // on indique que si la hauteur (y) du contenu est plus grande que la taille de l'élément on veut une scrollbar
+  // auto mieux que scroll dans overflow car si taille ok on aura quand même un scroll
+  overflow-y: auto;
+  &__title {
+    padding: vars.$gutter;
+    margin-top: vars.$gutter;
+    font-weight: vars.$weight-bold;
+  }
+
+  &__item {
+    padding: vars.$gutter;
+    border-top: 1px solid vars.$color-alt;
+    font-weight: vars.$weight-medium;
+    // transition pour que ça disparaiise, on indique du type de transition (background color) + vitesse
+    // on dit dans le hover la couleur de notre background color
+    transition: background-color vars.$transition-slow;
+    &:hover {
+      cursor: pointer;
+      background-color: vars.$color-alt;
+      // pour gérer apparation du back color
+      transition-duration: background-color vars.$transition-fast;
+    }
+  }
+}
+
+

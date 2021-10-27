@@ -1,4 +1,6 @@
 // Import des composants
+import Amount from '../Amount'; 
+import Currencies from '../Currencies';
 
 // == Import
 import './styles.scss';
@@ -10,8 +12,8 @@ import './styles.scss';
 const Converter = () => (
 
   <div className="converter">
-    <div>Amount</div>
-    <div>Currencies</div>
+    <Amount/>
+    <Currencies/>
     <div>ConvertedAmount</div>
   </div>
 
