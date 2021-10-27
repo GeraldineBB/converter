@@ -23,15 +23,28 @@ class Converter extends React.Component {
       // eslint-disable-next-line react/no-unused-state
       open: true,
     };
+
+    // pour garder le contexte : on fixe le contexte pour this
+    // on force le this de la méthode toggle avec le this du composant
+    // la méthode toggle se rappelera du de son contexte
+    // même si elle est utilisée ailleurs...
+    this.toggle = this.toggle.bind(this); 
+  }
+
+  // on déclare une méthode toggle
+  toggle() {
+  // console.log('faut toggler');
+  // on met à jour le state 
+    this.setState({open: false});
   }
 
   // == Composant
   render() {
-    const open = true;
-
+    const { open } = this.state;
     return (
       <div className="converter">
         <Amount amount={1} />
+        <button onClick={this.toggle}>toggle</button>
         {
       /* les vues conditionnelles :
       Pour afficher une partie de l'interface de manière conditionnelle
