@@ -2,7 +2,8 @@
 @use 'vars';
 
 body {
-  font-family: sans-serif;
+  // ici on utilise la valeur de la variable font
+  font-family: vars.$font;
 }
 
 /* 

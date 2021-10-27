@@ -1,0 +1,20 @@
+// on déclare une variable font
+// sa valeur est : 'Spartan', sans-serif
+
+$font: 'Spartan', sans-serif; 
+
+$color-main: #bb5432; 
+$color-alt: #f1c5b6;
+$color-light: #fff;
+
+$transition-fast: 0.2s; 
+$transition-slow: 1s; 
+
+$gutter: 1rem; 
+
+// on aurait pu maintenant se servir de cette variable
+/*
+body{
+  font: $font;
+}
+*/
