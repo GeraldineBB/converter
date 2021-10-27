@@ -5,6 +5,7 @@ import React from 'react';
 import Amount from '../Amount';
 import Currencies from '../Currencies';
 import ConvertedAmount from '../ConvertedAmount';
+import Toggler from '../Toggler';
 
 // == Import
 import './styles.scss';
@@ -42,7 +43,7 @@ class Converter extends React.Component {
     return (
       <div className="converter">
         <Amount amount={1} />
-        <button onClick={this.toggle}>toggle</button>
+        <Toggler open={open} toggle={this.toggle}/>
         {
       /* les vues conditionnelles :
       Pour afficher une partie de l'interface de manière conditionnelle
