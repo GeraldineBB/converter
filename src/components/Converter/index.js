@@ -13,7 +13,7 @@ import './styles.scss';
 const Converter = () => (
 
   <div className="converter">
-    <Amount/>
+    <Amount amount={1}/>
     <Currencies/>
     <ConvertedAmount/>
   </div>
