@@ -28,7 +28,7 @@ class Converter extends React.Component {
     // on force le this de la méthode toggle avec le this du composant
     // la méthode toggle se rappelera du de son contexte
     // même si elle est utilisée ailleurs...
-    this.toggle = this.toggle.bind(this); 
+    // this.toggle = this.toggle.bind(this); 
   }
 
   // on déclare une méthode toggle
@@ -44,7 +44,7 @@ class Converter extends React.Component {
     return (
       <div className="converter">
         <Amount amount={1} />
-        <button onClick={this.toggle}>toggle</button>
+        <button onClick=={() => this.toggle()}>toggle</button>
         {
       /* les vues conditionnelles :
       Pour afficher une partie de l'interface de manière conditionnelle
