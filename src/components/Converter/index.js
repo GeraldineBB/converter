@@ -7,14 +7,14 @@ import ConvertedAmount from '../ConvertedAmount';
 import './styles.scss';
 
 // Import des données
-// import currenciesData from '../../data/currencies';
+import currenciesList from '../../data/currencies';
 
 // == Composant
 const Converter = () => (
 
   <div className="converter">
     <Amount amount={1}/>
-    <Currencies/>
+    <Currencies currencies={currenciesList}/>
     <ConvertedAmount amount={1.08} currency="Blabla"/>
   </div>
 
