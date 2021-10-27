@@ -1,5 +1,8 @@
+// import npm
+import React from 'react';
+
 // Import des composants
-import Amount from '../Amount'; 
+import Amount from '../Amount';
 import Currencies from '../Currencies';
 import ConvertedAmount from '../ConvertedAmount';
 
@@ -9,17 +12,41 @@ import './styles.scss';
 // Import des données
 import currenciesList from '../../data/currencies';
 
-// == Composant
-const Converter = () => (
+class Converter extends React.Component {
+  constructor(props) {
+  // ICi, on appelle le constructeur de React.Component
+  // en lui transmettant nos props
+  // Permet d'initialiser le mécanisme de props
+    super(props);
 
-  <div className="converter">
-    <Amount amount={1}/>
-    <Currencies currencies={currenciesList}/>
-    <ConvertedAmount amount={1.08} currency="Blabla"/>
-  </div>
+    this.state = {
+      // eslint-disable-next-line react/no-unused-state
+      open: true,
+    };
+  }
 
+  // == Composant
+  render() {
+    const open = true;
 
-);
+    return (
+      <div className="converter">
+        <Amount amount={1} />
+        {
+      /* les vues conditionnelles :
+      Pour afficher une partie de l'interface de manière conditionnelle
+      On s'appuie sur la manière dont JS évalue une expression
+      En effet:
+      - true && une autre expression sera évaluée (et donc aura la valeur de une autre expression)
+      - false && autre expression sera toujours évalué comme false
+      De plus rendre un booléen dans notre JSX ne 'rend' rien du tout
+      */
+    }
+        {open && <Currencies currencies={currenciesList} />}    <ConvertedAmount amount={1.08} currency="Blabla" />
+      </div>
+    );
+  }
+}
 
 // == Export
 export default Converter;
