@@ -25,6 +25,19 @@ class Converter extends React.Component {
     filter: '',
   }
 
+  // on définit une fonction qui modifie le DOM
+  // ici, le titre de la page
+  pageTitleEffect() {
+
+    // on extrait les données de notre state pour les modifier
+    const {currency, amount} = this.state; 
+    const title = `Convert ${amount} euro${amount >= 2 ? 's' : ''} to ${currency}`;
+    // ici on aurait pu faire un querySector title pour récup le titre de notre document 
+    // en dehors de notre app react > dom réel > query Selectir ...
+    // effet de bord 
+    document.title = title; 
+  }
+
   // on déclare une méthode toggle
   // pour inverser la propriété open
   // on récupère la valeur courante
@@ -62,6 +75,10 @@ class Converter extends React.Component {
     // this.setState({ filter: filter });
   }
 
+  setAmount = (amount) => {
+    this.setState({amount}); 
+  }
+
   getConvertedAmount = () => {
     // on réalise la conversion
     // plan d'attaque:
@@ -96,12 +113,44 @@ class Converter extends React.Component {
     return filteredCurrencies;
   }
 
+  // on demande la mise à jour du titre de la page
+  // immédiatement après le rendu initial
+  componentDidMount() {
+    this.pageTitleEffect();
+  // But : replier la liste lorsque l'utilisateur appuie sur espace
+  // plan d'attaque :
+  // Au lancement de l'app, càd au montage de notre composant principal
+  // - écouter une frappe clavier (addEventListener)
+  // - si bouton = esc >> mettre open false 
+
+  // eslint-disable-next-line max-len
+  // la fonction appelée handler doit être une fonction fléchée pour garder le ccontexte lexical (sinon this ne marche pas)
+  document.addEventListener('keyup', (e) => {
+    // - si c'est le bouton esc
+    if (e.code === 'Escape') {
+      console.log(this); // docuement 
+      //   - mettre open false
+      this.setState({ open: false });
+      // si on veut l'inserve de ce qu'on a : open : !this.state.open
+    }
+  });  
+}
+
+  // on demande la mise à jour du titre de la page
+  // immédiatement après chaque nouveau rendu
+  componentDidUpdate() {
+    this.pageTitleEffect();
+  }
+
   // == Composant
   render() {
+
+    console.log('Converter : render')
+
     // on extrait la valeur courante de filter depuis le state
     // on pourrait utilser le spread operator pour passer 
     // tout le contenu du state
-
+    
     const {
       open, amount, currency, filter,
     } = this.state;
@@ -112,7 +161,7 @@ class Converter extends React.Component {
 
     return (
       <div className="converter">
-        <Amount amount={amount} />
+        <Amount amount={amount} setAmount={this.setAmount} />
         <Toggler open={open} toggle={this.toggle} />
         {
       /* les vues conditionnelles :

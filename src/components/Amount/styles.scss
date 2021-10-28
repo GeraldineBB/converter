@@ -20,5 +20,18 @@ text-align: center;
     font-size: 1.3rem; 
   }
 
+  &__value {
+    background: transparent;
+    border: 0;
+    font: inherit;
+    color: vars.$color-light;
+    width: 2.5em;
+    margin-right: vars.$gutter/2;
+  
+    &:focus {
+      box-shadow: inset 3px 3px 3px rgba(0, 0, 0, .5);
+    }
+  }
+
 
 }
