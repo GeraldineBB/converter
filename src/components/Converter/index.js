@@ -39,10 +39,17 @@ class Converter extends React.Component {
     this.setState({ open: !open });
   }
 
+  // une fonction pour changer le state de currency 
+  // eslint-disable-next-line max-len
+  // ensuite quand on va cliquer sur un li, on va changer le currency et ça aura directement des répercussions sur le getConvertedAmount sans qu'on ait à changer la fonction
+  // cette methode permet de mettre à jour la devise
+  // Il va falloir la faire descendre la référence à cette méthode
+  // au composant qui en a besoin : Currency
+  // pour se faire, on va faire en sorte de la transmettre au composant intermédiaire Currencies
   changeCurrency = (currencyName) => {
 
     // eslint-disable-next-line no-console
-    console.log("changeCurrency",currencyName); 
+    // console.log("changeCurrency",currencyName); 
 
     this.setState({ currency: currencyName });
 

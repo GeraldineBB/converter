@@ -1,30 +1,22 @@
 import PropTypes from 'prop-types';
-import React from 'react';
 
-
-class Currency extends React.Component {
-  
-  constructor(props) {
-    super(props);
-    this.name = props.name;
-    this.changeCurrency = props.changeCurrency;
-  }
-
-  handleClick = () => {
-    console.log("test", this.name); 
-    this.changeCurrency(this.name)
-  }
-
-  render() {
-    return (
-      <li className="currencies__item" onClick={this.handleClick}> {this.name}</li>
-    )
-  }
-
-}
+const Currency = ({ name, changeCurrency }) => (
+  <li
+    onClick={() => {
+      console.log('click sur une devise, j\'aiemrais pouvoir appeler setCurrency du Converter');
+      // on a déja accès à la devise que dont est en train d'afficher la représentation
+      // on sait que si on clique sur cette devise, c'est cette même devise que l'on veut avoir comme devise courante
+      changeCurrency(name);
+    }}
+    className="currencies__item"
+  >
+    {name}
+  </li>
+);
 
 Currency.propTypes = {
   name: PropTypes.string.isRequired,
-}
+  changeCurrency: PropTypes.func.isRequired,
+};
 
-export default Currency; 
+export default Currency;
