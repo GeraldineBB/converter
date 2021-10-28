@@ -21,6 +21,8 @@ class Converter extends React.Component {
     open: true,
     amount: 1,
     currency: 'Bulgarian Lev',
+    // on prévoit dans le state une valeur initiale pour le champs de recherche
+    filter: '', 
   }
 
   // on déclare une méthode toggle
@@ -55,6 +57,14 @@ class Converter extends React.Component {
 
   }
 
+  setFilter = (filter) => {
+    this.setState({filter});
+
+    // équivalent à : (shorthand property)
+    // this.setState({ filter: filter });
+
+  }
+
 
   getConvertedAmount = () => {
     // on réalise la conversion
@@ -72,7 +82,10 @@ class Converter extends React.Component {
 
   // == Composant
   render() {
-    const { open, amount, currency } = this.state;
+    // on extrait la valeur courante de filter depuis le state
+    // on pourrait utilser le spread operator pour passer tout le contenu du state 
+
+    const { open, amount, currency, filter } = this.state;
     const convertedAmount = this.getConvertedAmount();
 
     return (
@@ -89,7 +102,7 @@ class Converter extends React.Component {
       De plus rendre un booléen dans notre JSX ne 'rend' rien du tout
       */
     }
-        {open && <Currencies currencies={currenciesList} changeCurrency={this.changeCurrency} />}
+        {open && <Currencies filter={filter} currencies={currenciesList} changeCurrency={this.changeCurrency} setFilter={this.setFilter}/>}
         <ConvertedAmount amount={convertedAmount} currency={currency} />
       </div>
     );

@@ -6,6 +6,19 @@
   // on indique que si la hauteur (y) du contenu est plus grande que la taille de l'élément on veut une scrollbar
   // auto mieux que scroll dans overflow car si taille ok on aura quand même un scroll
   overflow-y: auto;
+
+  &__filter {
+    padding: vars.$gutter;
+    margin-top: vars.$gutter;
+    width: 100%;
+    border: none;
+    color: vars.$color-main;
+    font: inherit;
+    &::placeholder {
+      color: vars.$color-alt;
+    }
+  }
+
   &__title {
     padding: vars.$gutter;
     margin-top: vars.$gutter;
