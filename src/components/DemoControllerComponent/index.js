@@ -24,7 +24,7 @@ class DemoControlledComponent extends React.Component {
     // on force la valeur avec value
     // on réagit au modification sur le champ
     // en écoutant les changements (onChange)
-    // et en demandant la mise de la vvaleur dans le state en appellant setInputValue
+    // et en demandant la mise à jour de la valeur dans le state en appellant setInputValue
     return (
       <input
         type="text"

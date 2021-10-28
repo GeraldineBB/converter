@@ -22,7 +22,7 @@ class Converter extends React.Component {
     amount: 1,
     currency: 'Bulgarian Lev',
     // on prévoit dans le state une valeur initiale pour le champs de recherche
-    filter: '', 
+    filter: '',
   }
 
   // on déclare une méthode toggle
@@ -41,7 +41,7 @@ class Converter extends React.Component {
     this.setState({ open: !open });
   }
 
-  // une fonction pour changer le state de currency 
+  // une fonction pour changer le state de currency
   // eslint-disable-next-line max-len
   // ensuite quand on va cliquer sur un li, on va changer le currency et ça aura directement des répercussions sur le getConvertedAmount sans qu'on ait à changer la fonction
   // cette methode permet de mettre à jour la devise
@@ -49,22 +49,18 @@ class Converter extends React.Component {
   // au composant qui en a besoin : Currency
   // pour se faire, on va faire en sorte de la transmettre au composant intermédiaire Currencies
   changeCurrency = (currencyName) => {
-
     // eslint-disable-next-line no-console
-    // console.log("changeCurrency",currencyName); 
+    // console.log("changeCurrency",currencyName);
 
     this.setState({ currency: currencyName });
-
   }
 
   setFilter = (filter) => {
-    this.setState({filter});
+    this.setState({ filter });
 
     // équivalent à : (shorthand property)
     // this.setState({ filter: filter });
-
   }
-
 
   getConvertedAmount = () => {
     // on réalise la conversion
@@ -77,16 +73,42 @@ class Converter extends React.Component {
     );
     // - on multiplie par le rate de la devise trouvée
     return Number((amount * foundCurrency.rate).toFixed(2));
+  }
 
-}
+  // eslint-disable-next-line class-methods-use-this
+  getFilteredCurrencies() {
+    // Ici, on va déduire la liste des devise à afficher
+    // en se basant sur :
+    // - la liste complète des devises (currenciesList),
+    // - ce qui a été saisi par l'utilisateur dans le champ de recherche (this.state.state)
+    const { filter } = this.state;
+    const loweredFilter = filter.toLowerCase();
+    // Plan d'attaque
+    // on filtre la liste des devises en utilisant la valeur de filter
+    const filteredCurrencies = currenciesList.filter(
+      // eslint-disable-next-line arrow-body-style
+      (currencyItem) => {
+        const loweredCurrencyName = currencyItem.name.toLowerCase();
+        return loweredCurrencyName.includes(loweredFilter);
+      },
+    );
+
+    return filteredCurrencies;
+  }
 
   // == Composant
   render() {
     // on extrait la valeur courante de filter depuis le state
-    // on pourrait utilser le spread operator pour passer tout le contenu du state 
+    // on pourrait utilser le spread operator pour passer 
+    // tout le contenu du state
 
-    const { open, amount, currency, filter } = this.state;
+    const {
+      open, amount, currency, filter,
+    } = this.state;
     const convertedAmount = this.getConvertedAmount();
+
+    // on utilse la méthode getFilteredCurrencies pour récupérer la liste des devises à afficher
+    const filteredCurrencies = this.getFilteredCurrencies();
 
     return (
       <div className="converter">
@@ -102,7 +124,7 @@ class Converter extends React.Component {
       De plus rendre un booléen dans notre JSX ne 'rend' rien du tout
       */
     }
-        {open && <Currencies filter={filter} currencies={currenciesList} changeCurrency={this.changeCurrency} setFilter={this.setFilter}/>}
+        {open && <Currencies currencies={filteredCurrencies} changeCurrency={this.changeCurrency} filter={filter} setFilter={this.setFilter} />}
         <ConvertedAmount amount={convertedAmount} currency={currency} />
       </div>
     );
