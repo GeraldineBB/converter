@@ -4,3 +4,4 @@ Ce projet est un des premiers projets de la spécialisation React. Cette petite 
 ## Notions abordées
 #### 1. Transitions CSS
 #### 2. Props, state, handler
+#### 3. Composants classes
